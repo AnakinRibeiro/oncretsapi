@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Constructions</h1>
+
+<% if can? :create, Construction %>
+  <%= link_to 'New Construction', new_construction_path, class: "btn mr-1 mb-1 btn-inverse" %>
+<% end %>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Is Active?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @constructions.each do |construction| %>
+      <tr>
+        <td><%= construction.name %></td>
+        <td><img class="img-fluid rounded thumb64" src="<%= construction.image.attached? ? rails_blob_path(construction.image) : image_path('angle/dummy.png') %>" /></td>
+        <td><%= construction.is_active ? "Yes" : "No" %></td>
+        <td><%= link_to 'Show', construction, class:"mb-1 btn btn-primary" %></td>
+        <% if can? :update, Construction %>
+          <td><%= link_to 'Edit', edit_construction_path(construction), class:"mb-1 btn btn-purple" %></td>
+        <% end %>
+        <% if can? :delete, Construction %>
+          <td><%= button_to construction_path(construction), method: :delete, onClick: 'return confirm("Are you sure?");', remote: true, class: "btn btn-danger" do %>Delete<% end %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

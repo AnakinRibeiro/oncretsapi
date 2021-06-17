@@ -1,0 +1,2 @@
+module SpreadsheetsEquipmentsHelper
+end

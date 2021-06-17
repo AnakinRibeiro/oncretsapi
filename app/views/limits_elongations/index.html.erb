@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Limits Elongations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Initial length</th>
+      <th>Final length</th>
+      <th>Inferior limit</th>
+      <th>Upper limit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @limits_elongations.each do |limits_elongation| %>
+      <tr>
+        <td><%= limits_elongation.initial_length %></td>
+        <td><%= limits_elongation.final_length %></td>
+        <td><%= limits_elongation.inferior_limit %></td>
+        <td><%= limits_elongation.upper_limit %></td>
+        <td><%= link_to 'Show', limits_elongation %></td>
+        <td><%= link_to 'Edit', edit_limits_elongation_path(limits_elongation) %></td>
+        <td><%= link_to 'Destroy', limits_elongation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Limits Elongation', new_limits_elongation_path %>

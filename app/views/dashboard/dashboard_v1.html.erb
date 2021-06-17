@@ -1,0 +1,65 @@
+<div class="content-heading">
+   <div>Dashboard
+      <small data-localize="dashboard.WELCOME"></small>
+   </div>
+   <!-- START Language list-->
+   <%= render partial: "layouts/partials/language_settings" %>
+   <!-- END Language list-->
+</div>
+
+<div class="row">
+   <!-- START dashboard main content-->
+   <!-- START Multiple List group-->
+<div class="col-lg-12">
+<% @constructions.each do |c| %>
+   <div class="list-group mb-3">
+      <a class="list-group-item" href="#">
+         <table class="wd-wide">
+            <tbody>
+               <tr>
+                  <td class="wd-xs">
+                     <div class="px-2">
+                        <img class="img-fluid rounded thumb64" src="<%= c.image.attached? ? rails_blob_path(c.image) : image_path('angle/dummy.png') %>" />
+                     </div>
+                  </td>
+                  <td>
+                     <div class="px-2">
+                        <%= link_to "<h4 class='mb-0'>#{c.name}</h4>".html_safe, "/construction_details/#{c.id}" %>
+                        <small class="text-muted"></small>
+                     </div>
+                  </td>
+                  <td class="wd-sm d-none d-lg-table-cell">
+                     <div class="px-2">
+                        <small class="m-0">Last change</small><br>
+                        <medium class="text-muted"><%= time_ago_in_words(c.updated_at) %></medium>
+                     </div>
+                  </td>
+                  <td class="wd-xs d-none d-lg-table-cell">
+                     <div class="px-2">
+                        <p class="m-0 text-muted">
+                           <em class="icon-layers mr-2 fa-lg"></em><%= c.spreadsheets.count %></p>
+                     </div>
+                  </td>
+                  <td class="wd-xs d-none d-lg-table-cell">
+                     <div class="px-2">
+                        <p class="m-0 text-muted">
+                           <em class="icon-doc mr-2 fa-lg"></em><%= c.cables_count %></p>
+                     </div>
+                  </td>
+                  <td class="wd-sm">
+                     <div class="px-2">
+                        <p class="m-0 text-muted">
+                           <em class="icon-list mr-2 fa-lg"></em><%= c.elongations_count %></p>
+                     </div>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </a>
+   </div>
+<% end %>
+<!-- END Multiple List group-->
+   <!-- END dashboard sidebar-->
+</div>
+
+</div>

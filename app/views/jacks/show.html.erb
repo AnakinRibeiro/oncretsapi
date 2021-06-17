@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Identification:</strong>
+  <%= @jack.identification %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @jack.name %>
+</p>
+
+<%= link_to 'Back', construction_jacks_path, class:"mb-1 btn btn-primary" %> |
+<%= link_to 'Edit', edit_construction_jack_path(@jack), class:"mb-1 btn btn-purple" %>

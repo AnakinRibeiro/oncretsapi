@@ -1,0 +1,46 @@
+<table class="table-sm table mb-5 " id="table-info">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Pavimento</th>
+      <th scope="col">Peso total (kg)</th>
+      <th scope="col">Comprimento total (m)</th>
+      <th scope="col">A.A total</th>
+      <th scope="col">A.P total</th>
+    </tr>
+  </thead>
+  <tbody id="table-body-info">
+    <tr>
+      <td><%= @spreadsheet.name %></td>
+      <td><%= value_to_show(@spreadsheet.cables.sum(:length) * @spreadsheet.kg_m) rescue 0 %></td>
+      <td><%= value_to_show(@spreadsheet.cables.sum(:length)) %></td>
+      <td><%= @spreadsheet.cables.sum(:active_anchoring) %></td>
+      <td><%= @spreadsheet.cables.sum(:passive_anchoring) %></td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-bordered table-hover table-striped" id="table_cables">
+  <thead>
+    <tr class="thead-dark">
+        <th scope="col">ID</th>
+      <th scope="col">Posição</th>
+      <th scope="col">Ident.</th>
+      <th scope="col">Comprimento</th>
+      <th scope="col">A.A</th>
+      <th scope="col">A.P</th>
+      <th scope="col">Along. Prev.</th>
+    </tr>
+  </thead>
+  <tbody id="table-body-cables">
+      <% @spreadsheet.cables.each do |c| %>
+        <tr>
+        <td><%= c.id %></td>
+        <td><%= c.positions_cable_id %></td>
+        <td><%= c.identification %></td>
+        <td><%= c.length %></td>
+        <td><%= c.active_anchoring %></td>
+        <td><%= c.passive_anchoring %></td>
+        <td><%= c.predicted_elongation %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

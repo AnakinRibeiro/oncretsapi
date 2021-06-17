@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Construction:</strong>
+  <%= @constructions_activity.construction_id %>
+</p>
+
+<p>
+  <strong>Activities type:</strong>
+  <%= @constructions_activity.activities_type_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @constructions_activity.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_constructions_activity_path(@constructions_activity) %> |
+<%= link_to 'Back', constructions_activities_path %>

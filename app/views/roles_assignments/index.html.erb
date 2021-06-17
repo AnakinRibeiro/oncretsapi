@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Roles Assignments</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Role</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @roles_assignments.each do |roles_assignment| %>
+      <tr>
+        <td><%= roles_assignment.user_id %></td>
+        <td><%= roles_assignment.role %></td>
+        <td><%= link_to 'Show', roles_assignment %></td>
+        <td><%= link_to 'Edit', edit_roles_assignment_path(roles_assignment) %></td>
+        <td><%= link_to 'Destroy', roles_assignment, method: :delete, data: { confirm: 'Are you sure?' }, class:"mb-1 btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Roles Assignment', new_roles_assignment_path %>

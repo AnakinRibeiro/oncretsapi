@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Jacks Uses</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Jack</th>
+      <th>Spreadsheet</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Elongations number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jacks_uses.each do |jacks_use| %>
+      <tr>
+        <td><%= jacks_use.jack_id %></td>
+        <td><%= jacks_use.spreadsheet_id %></td>
+        <td><%= jacks_use.start %></td>
+        <td><%= jacks_use.end %></td>
+        <td><%= jacks_use.elongations_number %></td>
+        <td><%= link_to 'Show', jacks_use %></td>
+        <td><%= link_to 'Edit', edit_jacks_use_path(jacks_use) %></td>
+        <td><%= link_to 'Destroy', jacks_use, method: :delete, data: { confirm: 'Are you sure?' }, class:"mb-1 btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Jacks Use', new_jacks_use_path %>

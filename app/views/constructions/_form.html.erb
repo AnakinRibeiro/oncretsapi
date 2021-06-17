@@ -1,0 +1,38 @@
+<div class="card card-default">
+  <div class="card-body">
+    <%= form_with(model: construction, local: true) do |form| %>
+    <% if construction.errors.any? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= pluralize(construction.errors.count, "error") %> prohibited this construction from being saved:
+      
+          <ul>
+            <% construction.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.file_field :image %>
+    </div>
+
+    <div class="form-group">
+      <%= form.check_box :is_active %>
+      <%= form.label :is_active, class: "form-check-label" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit class:"btn btn-sm btn-secondary" %>
+    </div>
+  </div>
+</div>
+<% end %>

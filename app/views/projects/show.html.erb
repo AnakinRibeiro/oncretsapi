@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @project.version %>
+</p>
+
+<p>
+  <strong>Construction:</strong>
+  <%= @project.construction.name %>
+</p>
+
+<p>
+  <%= image_tag(@project.file.variant(resize: "120x120")) if @project.file.attached? %>
+</p>
+
+<%= link_to 'Back', construction_projects_path(@construction), class:"mb-1 btn btn-primary" %> |
+<%= link_to 'Edit', edit_construction_project_path(@construction, @project), class:"mb-1 btn btn-purple" %>

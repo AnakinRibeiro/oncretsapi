@@ -1,0 +1,29 @@
+<div class="card card-default">
+  <div class="card-body">
+    <%= form_with(model: roles_assignment, local: true) do |form| %>
+  <% if roles_assignment.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= pluralize(roles_assignment.errors.count, "error") %> prohibited this roles_assignment from being saved:
+
+      <ul>
+        <% roles_assignment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :role %>
+    <%= form.text_field :role %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-sm btn-secondary" %>
+  </div>
+<% end %>

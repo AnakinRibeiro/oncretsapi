@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Identification:</strong>
+  <%= @pump.identification %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pump.name %>
+</p>
+
+<%= link_to 'Back', company_pumps_path, class:"mb-1 btn btn-purple" %> |
+<%= link_to 'Edit', edit_company_pump_path(@pump), class:"mb-1 btn btn-primary" %>

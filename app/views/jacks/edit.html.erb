@@ -1,0 +1,6 @@
+<h1>Editing Jack</h1>
+
+<%= render 'form', jack: @jack %>
+
+<%= link_to 'Show', company_jack_path(@jack.company_id, @jack), class: "btn btn-primary" %> |
+<%= link_to 'Back', company_jacks_path, class: "btn btn-primary" %>

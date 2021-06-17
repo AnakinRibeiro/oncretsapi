@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Phones Types</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @phones_types.each do |phones_type| %>
+      <tr>
+        <td><%= phones_type.name %></td>
+        <td><%= link_to 'Show', phones_type %></td>
+        <td><%= link_to 'Edit', edit_phones_type_path(phones_type) %></td>
+        <td><%= link_to 'Destroy', phones_type, method: :delete, data: { confirm: 'Are you sure?' }, class:"mb-1 btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Phones Type', new_phones_type_path %>

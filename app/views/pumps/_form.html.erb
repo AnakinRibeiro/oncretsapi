@@ -1,0 +1,33 @@
+<div class="card card-default">
+  <div class="card-body">
+
+<%= form_for [@company, @pump] do |form| %>
+  <% if pump.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pump.errors.count, "error") %> prohibited this pump from being saved:</h2>
+
+      <ul>
+        <% pump.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :identification %>
+    <%= form.text_field :identification, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-sm btn-secondary" %>
+  </div>
+
+  </div>
+  </div>
+<% end %>

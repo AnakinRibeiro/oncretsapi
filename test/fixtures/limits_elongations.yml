@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  initial_length: 1.5
+  final_length: 1.5
+  inferior_limit: 1.5
+  upper_limit: 1.5
+
+two:
+  initial_length: 1.5
+  final_length: 1.5
+  inferior_limit: 1.5
+  upper_limit: 1.5

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Jack:</strong>
+  <%= @jacks_use.jack_id %>
+</p>
+
+<p>
+  <strong>Spreadsheet:</strong>
+  <%= @jacks_use.spreadsheet_id %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @jacks_use.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @jacks_use.end %>
+</p>
+
+<p>
+  <strong>Elongations number:</strong>
+  <%= @jacks_use.elongations_number %>
+</p>
+
+<%= link_to 'Edit', edit_jacks_use_path(@jacks_use) %> |
+<%= link_to 'Back', jacks_uses_path %>

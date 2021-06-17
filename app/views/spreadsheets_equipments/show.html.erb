@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Spreadsheet:</strong>
+  <%= @spreadsheets_equipment.spreadsheet_id %>
+</p>
+
+<p>
+  <strong>Pump:</strong>
+  <%= @spreadsheets_equipment.pump_id %>
+</p>
+
+<p>
+  <strong>Jack:</strong>
+  <%= @spreadsheets_equipment.jack_id %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @spreadsheets_equipment.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @spreadsheets_equipment.end %>
+</p>
+
+<p>
+  <strong>Elongations number:</strong>
+  <%= @spreadsheets_equipment.elongations_number %>
+</p>
+
+<%= link_to 'Edit', edit_spreadsheets_equipment_path(@spreadsheets_equipment) %> |
+<%= link_to 'Back', spreadsheets_equipments_path %>

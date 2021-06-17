@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Spreadsheet:</strong>
+  <%= @cable.spreadsheet_id %>
+</p>
+
+<p>
+  <strong>Positions cable:</strong>
+  <%= @cable.positions_cable_id %>
+</p>
+
+<p>
+  <strong>Identification:</strong>
+  <%= @cable.identification %>
+</p>
+
+<p>
+  <strong>Length:</strong>
+  <%= @cable.length %>
+</p>
+
+<p>
+  <strong>Predicted elongation:</strong>
+  <%= @cable.predicted_elongation %>
+</p>
+
+<p>
+  <strong>Mask:</strong>
+  <%= @cable.mask %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @cable.status %>
+</p>
+
+<%= link_to 'Edit', edit_cable_path(@cable) %> |
+<%= link_to 'Back', cables_path %>

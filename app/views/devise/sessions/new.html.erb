@@ -1,0 +1,54 @@
+<div class="block-center mt-5 wd-xl">
+   <%= render "devise/shared/error_messages", resource: resource %>
+   <!-- START card-->
+   <div class="card card-flat">
+      <div class="card-header text-center bg-dark">
+         <a href="#">
+            <img class="block-center rounded" src="<%= image_path('angle/logo.png') %>" style="width: 80pt; padding: 5pt;" alt="Image" />
+         </a>
+      </div>
+      <div class="card-body">
+         <%= form_for(resource, as: resource_name, url: session_path(resource_name), class:"mb-3", novalidate:"novalidate") do |f| %>
+            <div class="form-group">
+               <div class="input-group with-focus">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control border-right-0", placeholder:"Enter email", required: true %>
+                  <div class="input-group-append">
+                     <span class="input-group-text text-muted bg-transparent border-left-0">
+                         <em class="fa fa-envelope"></em>
+                     </span>
+                  </div>
+               </div>
+            </div>
+            <div class="form-group">
+               <div class="input-group with-focus">
+                  <%= f.password_field :password, autocomplete: "current-password", class:"form-control border-right-0", placeholder:"Password", required: true %>
+                  <div class="input-group-append">
+                     <span class="input-group-text text-muted bg-transparent border-left-0">
+                         <em class="fa fa-lock"></em>
+                     </span>
+                  </div>
+               </div>
+            </div>
+            <div class="clearfix">
+               <div class="checkbox c-checkbox float-left mt-0">
+                  <label>
+                     <%= f.check_box :remember_me %>
+                     <span class="fa fa-check"></span><%= f.label :remember_me %></label>
+               </div>
+               <div class="float-right"><%= link_to "Forgot your password?", new_password_path(resource_name), class: "text-muted" %>
+               </div>
+            </div>
+            <%= f.submit "Log in", class:"btn btn-block btn-primary mt-3" %>
+         <% end %>
+         <p class="pt-3 text-center">Need to Signup?</p><%= link_to "Register now", new_registration_path(resource_name), class:"btn btn-block btn-secondary" %>
+      </div>
+   </div>
+   <!-- END card-->
+   <div class="p-3 text-center">
+      <span class="mr-2">&copy;</span>
+      <span><%= Time.now.year %></span>
+      <span class="mr-2">-</span>
+      <span>Evehx Elongations</span>
+      <br/>
+   </div>
+</div>

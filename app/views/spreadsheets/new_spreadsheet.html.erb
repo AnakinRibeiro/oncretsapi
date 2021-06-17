@@ -1,0 +1,121 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/dashboard<%=  %>">Smart Evehx</a></li>
+    <li class="breadcrumb-item"><a href="/construction_details/<%= @spreadsheet.construction.id %>"><%= @spreadsheet.construction.name %></a></li>
+    <li class="breadcrumb-item active">New Spreadsheet</li>
+  </ol>
+</nav>
+  <div id="alert_spreadsheet_ok"class='alert alert-success' role='alert' style='display: none;'>
+    Spreadsheet was successfully created.
+  </div>
+<div class="card card-default">
+  <div class="card-body">
+    <%= form_for(@spreadsheet, id: "new-spreadsheet-form", remote: true, local: false) do |form| %>
+      <fieldset id="new-spreadsheet-form-fieldset">
+        <div class="form-row ">
+          <%= form.hidden_field :construction_id %>
+          <div class="form-group col-lg-4">
+            <%= form.label 'Pavimento', class:"form-label" %>
+            <%= form.text_field :name, class:"form-control", required: true %>
+          </div>
+          <div class="form-group col-lg-4">
+            <%= form.label 'Solicitante', class:"form-label" %>
+            <%= form.text_field :requester, class:"form-control", required: true %>
+          </div>
+          <div class="form-group col-lg-4">
+            <%= form.label 'Responsável', class:"form-label" %>
+            <%= form.text_field :resposible, class:"form-control", required: true %>
+          </div>
+        </div>
+        <div class="form-row mb-2">
+          <div class="form-group col-lg-4">
+            <%= form.label 'Observações', class:"form-label" %>
+            <%= form.text_field :comments, class:"form-control", required: true %>
+          </div>
+          <div class="form-group col-lg-4">
+            <%= form.label 'Tipo de numeração dos cabos', class:"form-label" %>
+            <%= form.select(:cable_numbering_type, options_for_select([["Código para Vários Cabos", "0"], ["Código Individualizado", "1"]]), { include_blank: true }, required: true, class:"custom-select form-control") %>
+          </div>
+          <div class="form-group col-lg-2">
+            <%= form.label 'Kg/m - calculista', class:"form-label" %>
+            <%= form.number_field :kg_m, class:"form-control", required: true, placeholder:"Ex: 0.89", step:".01" %>
+          </div>
+          <div class="form-group col-lg-2">
+            <%= form.label 'Tamanho Ponta do Cabo', class:"form-label" %>
+            <%= form.number_field :tip_size, class:"form-control", required: true, placeholder:"Ex: 60.00", step:".01" %>
+          </div>
+        </div>
+        <div class="form-row mt-3">
+          <%= form.submit 'Salvar', class:"btn mr-1 mb-1 btn-inverse" %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
+<div class="card card-default">
+  <div class="card-body">
+    <%= form_for(@cable, url: { controller: 'spreadsheets', action: 'create_cables' }, id: "cable_form", remote: true, local: false) do |form| %>
+      <fieldset disabled id="cable-form-fieldset">
+        <%= form.hidden_field :spreadsheet_id %>
+        <p id="change-cable-code"></p>
+        <div class="form-row mb-2">
+          <div class="form-group col-xl-2 col-lg-4 ">
+            <%= form.label 'Position', class:"form-label" %>
+            <%= form.select(:positions_cable_id, PositionsCable.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }, required: true, class:"custom-select form-control") %>
+          </div>
+          <div class="form-group col-xl-2 col-lg-4 ">
+            <%= form.label 'Identif.', class:"form-label" %>
+            <%= form.text_field :identification, class:"form-control", required: true %>
+          </div>
+          <div class="form-group col-xl-1 col-lg-4 ">
+            <%= form.label 'Quantity', class:"form-label" %>
+            <input type="number"  id="quantidade" name="quantidade" class="form-control" required>
+          </div>
+          <div class="form-group col-xl-2 col-lg-4 ">
+            <%= form.label 'Length', class:"form-label" %>
+            <%= form.number_field :length, class:"form-control", required: true, step: ".01" %>
+          </div>
+          <div class="form-group col-xl-2 col-lg-4 ">
+            <%= form.label 'Total Lenght', class:"form-label" %>
+            <input type="number" step=".01" id="comprimento-total" name="comprimento-total" class="form-control" disabled>
+          </div>
+          <div class="form-group col-xl-2 col-lg-3 ">
+            <%= form.label 'Predicted Elong.', class:"form-label" %>
+            <%= form.number_field :predicted_elongation, class:"form-control", required: true, step: ".01" %>
+          </div>
+          <div class="form-group col-xl-1 col-lg-1  checkbox-spreadsheet">
+            <%= form.label 'A.A', class:"form-label" %>
+            <%= form.check_box :active_anchoring, class:"form-control", required: true, step: ".01" %>
+          </div>
+        </div>
+        <div class="form-row mt-3">
+          <%= form.submit 'Add Cables', class:"btn mr-1 mb-1 btn-inverse" %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
+<div id="cables">
+  <%= render 'cables/cables' %>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmModalLabel">Gerar Cabos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Você tem certeza de que deseja Gerar os Cabos?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn mr-1 mb-1 btn-inverse">Gerar Cabos</button>
+      </div>
+  </div>
+  </div>
+</div>

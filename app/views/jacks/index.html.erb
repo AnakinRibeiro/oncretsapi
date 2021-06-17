@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Jacks</h1>
+
+<% if can? :create, Jack %>
+  <%= link_to 'New Jack', new_company_jack_path, class: "btn mr-1 mb-1 btn-inverse" %>
+<% end %>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Identification</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jacks.each do |jack| %>
+      <tr>
+        <td><%= jack.id %></td>
+        <td><%= jack.identification %></td>
+        <td><%= jack.name %></td>
+        <td><%= link_to 'Show', company_jack_path(jack.company_id, jack), class:"mb-1 btn btn-primary" %></td>
+        <% if can? :update, Jack %>
+          <td><%= link_to 'Edit', edit_company_jack_path(jack.company_id, jack), class:"mb-1 btn btn-purple" %></td>
+        <% end %>
+        <% if can? :delete, Jack %>
+          <td><%= button_to company_jack_path(jack.company_id, jack), method: :delete, onClick: 'return confirm("Are you sure?");', remote: true, class: "btn btn-danger" do %>Delete<% end %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

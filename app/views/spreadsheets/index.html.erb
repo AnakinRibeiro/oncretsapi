@@ -1,0 +1,47 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/dashboard<%=  %>">Smart Evehx</a></li>
+    <li class="breadcrumb-item"><a href="/construction_details/<%= @construction.id %>"><%= @construction.name %></a></li>
+    <li class="breadcrumb-item active" aria-current="page">Spreadsheets</li>
+  </ol>
+</nav>
+<% if can? :read, Spreadsheet %>
+  <%= link_to 'New Spreadsheet', construction_new_spreadsheet_url(@construction.id), class: "btn mr-1 mb-1 btn-inverse" %>
+<% end %>
+<div class="card card-default">
+  <div class="card-body">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Total Weight (kg)</th>
+              <th>Total Length (m)</th>
+              <th>Cables Count</th>
+              <th colspan="3"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @construction.spreadsheets.each do |spreadsheet| %>
+              <tr>
+                <td><%= spreadsheet.id %></td>
+                <td><%= spreadsheet.name %></td>
+                <td><%= get_status(spreadsheet.status) %></td>
+                <td><%= value_to_show(spreadsheet.cables.sum(:length) * spreadsheet.kg_m) rescue 0 %></td>
+                <td><%= value_to_show(spreadsheet.cables.sum(:length)) %></td>
+                <td><%= spreadsheet.cables.count %></td>
+                <td><%= link_to "Show", "/constructions/#{spreadsheet.construction_id}/spreadsheets/#{spreadsheet.id}/cables", class:"mb-1 btn btn-primary" %></td>
+                <% if can? :read, Elongation %>
+                  <td><%= link_to "Elongations", "/constructions/#{spreadsheet.construction_id}/spreadsheets/#{spreadsheet.id}/elongations", class:"mb-1 btn btn-inverse" %></td>
+                <% end %>
+                <% if can? :delete, Spreadsheet %>
+                  <td><%= link_to construction_spreadsheet_path(@construction.id, spreadsheet, page: params[:page]), method: :delete, onClick: 'return confirm("Are you sure?");', class: "btn btn-danger" do %>Delete<% end %></td>
+                <% end %>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+module ElongationsHelper
+end

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Constructions Activities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Construction</th>
+      <th>Activities type</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @constructions_activities.each do |constructions_activity| %>
+      <tr>
+        <td><%= constructions_activity.construction_id %></td>
+        <td><%= constructions_activity.activities_type_id %></td>
+        <td><%= constructions_activity.user_id %></td>
+        <td><%= link_to 'Show', constructions_activity %></td>
+        <td><%= link_to 'Edit', edit_constructions_activity_path(constructions_activity) %></td>
+        <td><%= link_to 'Destroy', constructions_activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Constructions Activity', new_constructions_activity_path %>

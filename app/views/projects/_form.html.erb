@@ -1,0 +1,40 @@
+<div class="card card-default">
+  <div class="card-body">
+    <%= form_for([@construction, @project]) do |form| %>
+      <% if project.errors.any? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:
+      
+          <ul>
+            <% project.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class:"form-control", required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :version %>
+    <%= form.text_field :version, class:"form-control", required: true %>
+  </div>
+
+    <%= form.hidden_field :construction_id, class:"form-control", required: true, value: @construction.id %>
+
+  <div class="form-group mt-3">
+    <%= form.file_field :file %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-sm btn-inverse" %>
+  </div>
+<% end %>
+</div>
+</div>

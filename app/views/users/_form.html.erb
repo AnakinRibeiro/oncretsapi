@@ -1,0 +1,48 @@
+<div class="card card-default">
+  <div class="card-body">
+    <%= form_with(model: user, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:
+
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password %>
+    <%= form.password_field :password, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :role %>
+    <%= form.select :role_id, options_from_collection_for_select(Role.all, "id", "name", user.role_id), class:"custom-select custom-select-sm" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-sm btn-secondary" %>
+  </div>
+
+</div>
+</div>
+
+<% end %>

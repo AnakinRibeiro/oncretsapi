@@ -1,0 +1,52 @@
+<div class="card card-default">
+  <span class="border border-primary"></span>
+  <div class="card-body">
+  <%= form_with(model: @cable, local: true, class: "form-inline") do |form| %>
+  <% if @cable.errors.any? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= pluralize(@cable.errors.count, "error") %> prohibited this cable from being saved:
+      
+          <ul>
+            <% @cable.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+  <%= form.hidden_field :spreadsheet_id %>
+  <%= form.hidden_field :construction_id %>
+
+  <div class="form-group">
+    <%= form.label :positions_cable_id %>
+    <%= form.select :positions_cable_id, options_from_collection_for_select(PositionsCable.all, "id", "name", @cable.positions_cable), class:"custom-select custom-select-sm mb-2", prompt: true, required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :identification, class:"form-control m-2", required: true, placeholder: :identification %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :quantity, class:"form-control m-2", required: true, placeholder: :quantity %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :length, class:"form-control m-2", required: true, placeholder: :length %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :predicted_elongation, class:"form-control m-2", required: true, placeholder: :predicted_elongation %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn m-2 btn-inverse" %>
+  </div>
+<% end %>
+
+</div>
+</div>
+
+</span>

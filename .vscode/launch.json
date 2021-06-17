@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Rails server",
+            "type": "Ruby",
+            "request": "launch",
+            "env": {
+                "PATH": "/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/igornichele/.npm-packages/bin:/Users/igornichele/.fastlane/bin:/usr/local/opt/php@7.1/sbin:/usr/local/opt/php@7.1/bin:/Users/igornichele/.rvm/gems/ruby-2.6.3/bin:/Users/igornichele/.rvm/gems/ruby-2.6.3@global/bin:/Users/igornichele/.rvm/rubies/ruby-2.6.3/bin:/Users/igornichele/.rvm/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:~/.composer/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/share/dotnet:/opt/X11/bin:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin:/Users/igornichele/.go/lib:/Users/igornichele/apache-maven-3.3.9/bin:/Users/igornichele/flutter/bin:/Users/igornichele/Documents/POSTECH/magento2/bin",
+                "GEM_HOME": "/Users/igornichele/.rvm/gems/ruby-2.6.3",
+                "GEM_PATH": "/Users/igornichele/.rvm/gems/ruby-2.6.3:/Users/igornichele/.rvm/gems/ruby-2.6.3@global",
+                "RUBY_VERSION": "ruby-2.6.3"
+            },
+            "program": "${workspaceRoot}/bin/rails",
+            "args": [
+                "server"
+            ]
+        }
+    ]
+}

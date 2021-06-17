@@ -1,0 +1,32 @@
+<%= form_with(model: constructions_activity, local: true) do |form| %>
+  <% if constructions_activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(constructions_activity.errors.count, "error") %> prohibited this constructions_activity from being saved:</h2>
+
+      <ul>
+        <% constructions_activity.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :construction_id %>
+    <%= form.text_field :construction_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :activities_type_id %>
+    <%= form.text_field :activities_type_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<div class="card card-default">
+  <div class="card-body">
+    <%= form_with(model: spreadsheet, local: true) do |form| %>
+  <% if spreadsheet.errors.any? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= pluralize(spreadsheet.errors.count, "error") %> prohibited this spreadsheet from being saved:
+      
+          <ul>
+            <% spreadsheet.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class:"form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label 'Construction' %>
+    <%= form.select :construction_id, options_from_collection_for_select(current_user.company.constructions.all, "id", "name", spreadsheet.construction), class:"custom-select custom-select-sm", prompt: true, required: true, class:"custom-select custom-select-sm" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-sm btn-secondary" %>
+  </div>
+<% end %>

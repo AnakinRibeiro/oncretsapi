@@ -1,0 +1,32 @@
+<div class="card card-default">
+  <div class="card-body">
+  <%= form_for [@company, @jack] do |form| %>
+  <% if jack.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= pluralize(jack.errors.count, "error") %> prohibited this jack from being saved:
+
+      <ul>
+        <% jack.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :identification %>
+    <%= form.text_field :identification, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-sm btn-secondary" %>
+  </div>
+
+  </div>
+  </div>
+<% end %>

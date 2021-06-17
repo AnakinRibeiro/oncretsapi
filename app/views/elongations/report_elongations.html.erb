@@ -1,0 +1,40 @@
+        <br>
+        <center>
+            <%= image_tag 'LOGO EVEHX-1.png' %>
+            <h2><b>Alongamentos</b></h2>
+        </center>
+            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+            <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    ​<body style="font-family: 'Montserrat', sans-serif;">
+        <div class="widget-body no-padding">
+            <table class="table table-striped table-bordered" width="100%">
+                <thead>
+                    <th>ID Cabo</th>
+                    <th scope="col">Posição</th>
+                    <th scope="col">Ident.</th>
+                    <th scope="col">Comprimento (m)</th>
+                    <th scope="col">Along. Prev.</th>
+                    <th scope="col">Alongamento</th>
+                    <th scope="col">Lt</th>
+                    <th scope="col">Desvio</th>
+                    <th scope="col">AI./m</th>
+                </thead>
+                <tbody>
+                <% @cables.each do |c| %>
+                    <tr>
+                        <td><%= c.id %></td>
+                        <td><%= c.positions_cable.name %></td>
+                        <td><%= c.identification %></td>
+                        <td><%= c.length %></td>
+                        <td><%= c.predicted_elongation %></td>                 
+                        <td><%= c.elongations.last.elongation rescue "" %></td>
+                        <td><%= c.elongations.count rescue "" %></td>
+                        <td><%= c.elongations.deviation rescue "" %></td>
+                        <td><%= c.elongations.last.elongation_meter rescue "" %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+        </div>
+    </body>

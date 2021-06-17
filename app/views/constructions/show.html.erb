@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @construction.name %>
+</p>
+
+<p>
+  <%= image_tag(@construction.image.variant(resize: "120x120")) if @construction.image.attached? %>
+</p>
+
+<p>
+  <strong>Is Active:</strong>
+  <%= @construction.is_active %>
+</p>
+
+<%= link_to 'Back', constructions_path, class:"mb-1 btn btn-primary" %> |
+<%= link_to 'Edit', edit_construction_path(@construction), class:"mb-1 btn btn-purple" %>
+

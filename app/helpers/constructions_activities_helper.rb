@@ -1,0 +1,2 @@
+module ConstructionsActivitiesHelper
+end

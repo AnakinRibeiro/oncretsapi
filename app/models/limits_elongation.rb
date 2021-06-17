@@ -1,0 +1,2 @@
+class LimitsElongation < ApplicationRecord
+end

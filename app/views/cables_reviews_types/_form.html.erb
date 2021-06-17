@@ -1,0 +1,24 @@
+<div class="card card-default">
+  <div class="card-body">
+    <%= form_with(model: cables_reviews_type, local: true) do |form| %>
+  <% if cables_reviews_type.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= pluralize(cables_reviews_type.errors.count, "error") %> prohibited this cables_reviews_type from being saved:
+
+      <ul>
+        <% cables_reviews_type.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-sm btn-secondary" %>
+  </div>
+<% end %>

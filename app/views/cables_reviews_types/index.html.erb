@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cables Reviews Types</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cables_reviews_types.each do |cables_reviews_type| %>
+      <tr>
+        <td><%= cables_reviews_type.name %></td>
+        <td><%= link_to 'Show', cables_reviews_type %></td>
+        <td><%= link_to 'Edit', edit_cables_reviews_type_path(cables_reviews_type) %></td>
+        <td><%= link_to 'Destroy', cables_reviews_type, method: :delete, data: { confirm: 'Are you sure?' }, class:"mb-1 btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cables Reviews Type', new_cables_reviews_type_path %>

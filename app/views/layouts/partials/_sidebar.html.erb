@@ -1,0 +1,74 @@
+<!-- START Sidebar (left)-->
+<div class="aside-inner">
+   <nav class="sidebar" data-sidebar-anyclick-close="">
+      <!-- START sidebar nav-->
+      <ul class="sidebar-nav">
+         <!-- START user info-->
+         <li class="has-user-block">
+            <div id="user-block" class="collapse">
+               <div class="item user-block">
+
+               </div>
+            </div>
+         </li>
+         <!-- END user info-->
+         <!-- Iterates over all sidebar items-->
+         <li class="nav-heading">
+            <span data-localize="sidebar.heading.HEADER">Main Navigation</span>
+         </li>
+         <li class="<%= 'active' if controller?('dashboard') && action?('dashboard_v1') %>">
+            <a href="/dashboard/" title="Dashboard">
+               <em class="icon-speedometer"></em>
+               <span data-localize="sidebar.nav.DASHBOARD">Dashboard</span>
+            </a>
+         </li>
+         <% if can? :read, User %>
+            <li class="<%= 'active' if controller?('widgets') && action?('index') %>">
+               <a href="/users_company" title="Users">
+                  <em class="fa fa-users"></em>
+                  <span data-localize="sidebar.nav.USERS">Users</span>
+               </a>
+            </li>
+         <% end %>
+         <!-- Layouts -->
+         <% if can? :read, Construction %>
+            <li>
+               <a href="/constructions" title="Constructions">
+                  <em class="fa fa-building"></em>
+                  <span data-localize="sidebar.nav.CONSTRUCTIONS">Constructions</span>
+               </a>
+            </li>
+         <% end %>
+
+         <% if can? :read, Jack %>
+            <li>
+               <a href="/companies/<%=current_user.company.id%>/jacks" title="Jacks">
+                  <em class="fa fa-hdd"></em>
+                  <span data-localize="sidebar.nav.JACKS">Jacks</span>
+               </a>
+            </li>
+         <% end %>
+
+         <% if can? :read, Pump %>
+            <li>
+               <a href="/companies/<%=current_user.company.id%>/pumps" title="Pumps">
+                  <em class="fa fa-bomb"></em>
+                  <span data-localize="sidebar.nav.PUMPS">Pumps</span>
+               </a>
+            </li>
+         <% end %>
+
+         <% if can? :read, 'Reports' %>
+            <li>
+               <a href="#" title="Reports">
+                  <em class="icon-pie-chart"></em>
+                  <span data-localize="sidebar.nav.REPORTS">Reports</span>
+               </a>
+            </li>
+         <% end %>
+         <!-- /Layouts -->
+      </ul>
+      <!-- END sidebar nav-->
+   </nav>
+</div>
+<!-- END Sidebar (left)-->

@@ -1,0 +1,30 @@
+<table class="table table-bordered table-hover table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#ID</th>
+      <th scope="col">Posição</th>
+      <th scope="col">Ident.</th>
+      <th scope="col">Comprimento (m)</th>
+      <th scope="col">Along. Prev.</th>
+      <th scope="col">Alongamento</th>
+      <th scope="col">Lt</th>
+      <th scope="col">Desvio</th>
+      <th scope="col">AI./m</th>
+    </tr>
+  </thead>
+  <tbody class="my-inline-table">
+    <% @spreadsheet.cables.each do |c| %>
+        <tr>
+        <td><input class="form-control" type="text" name="id-elongation" value="<%= c.id %>" readonly></td>
+        <td><input class="form-control" type="text" name="posicao-elongation" value="<%= c.positions_cable.name %>" readonly></td>
+        <td><input class="form-control" type="text" name="ident-elongation" value="<%= c.identification %>" readonly></td>
+        <td><input class="form-control" type="text" name="comprimento-elongation" value="<%= c.length %>" readonly></td>
+        <td><input class="form-control" type="text" name="along-prev-elongation" value="<%= c.predicted_elongation %>" readonly></td>
+        <td><input class="form-control" type="number" id="elongation_elongation" name="elongation_elongation" step=".01"></td>
+        <td><input class="form-control" type="text" name="lt-elongation" readonly></td>
+        <td><input class="form-control" type="text" name="desvio-elongation" readonly></td>
+        <td><input class="form-control" type="text" name="al-elongation" readonly></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

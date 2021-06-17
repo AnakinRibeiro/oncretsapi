@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @roles_assignment.user_id %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @roles_assignment.role %>
+</p>
+
+<%= link_to 'Edit', edit_roles_assignment_path(@roles_assignment) %> |
+<%= link_to 'Back', roles_assignments_path %>

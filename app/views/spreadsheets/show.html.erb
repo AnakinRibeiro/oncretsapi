@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Construction:</strong>
+  <%= @spreadsheet.construction_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @spreadsheet.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @spreadsheet.status %>
+</p>
+
+<%= link_to 'Edit', edit_spreadsheet_path(@spreadsheet) %> |
+<%= link_to 'Back', spreadsheets_path %>

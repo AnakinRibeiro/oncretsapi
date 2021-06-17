@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Initial length:</strong>
+  <%= @limits_elongation.initial_length %>
+</p>
+
+<p>
+  <strong>Final length:</strong>
+  <%= @limits_elongation.final_length %>
+</p>
+
+<p>
+  <strong>Inferior limit:</strong>
+  <%= @limits_elongation.inferior_limit %>
+</p>
+
+<p>
+  <strong>Upper limit:</strong>
+  <%= @limits_elongation.upper_limit %>
+</p>
+
+<%= link_to 'Edit', edit_limits_elongation_path(@limits_elongation) %> |
+<%= link_to 'Back', limits_elongations_path %>

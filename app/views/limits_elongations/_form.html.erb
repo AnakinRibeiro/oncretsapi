@@ -1,0 +1,37 @@
+<%= form_with(model: limits_elongation, local: true) do |form| %>
+  <% if limits_elongation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(limits_elongation.errors.count, "error") %> prohibited this limits_elongation from being saved:</h2>
+
+      <ul>
+        <% limits_elongation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :initial_length %>
+    <%= form.text_field :initial_length %>
+  </div>
+
+  <div class="field">
+    <%= form.label :final_length %>
+    <%= form.text_field :final_length %>
+  </div>
+
+  <div class="field">
+    <%= form.label :inferior_limit %>
+    <%= form.text_field :inferior_limit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :upper_limit %>
+    <%= form.text_field :upper_limit %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

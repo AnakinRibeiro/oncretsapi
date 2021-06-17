@@ -1,0 +1,13 @@
+<div class="nested-fields">
+    <div class="form-group">
+        <%= f.label :phones_type_id %>
+        <%= f.select :phones_type_id, PhonesType.all.collect {|p| [ p.name, p.id ] }, { include_blank: true } %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :phone %>
+        <%= f.text_field :phone %>
+    </div>
+
+    <%= link_to_remove_association 'Delete', f %>
+</div>

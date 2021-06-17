@@ -1,0 +1,20 @@
+// Place all the styles related to the elongations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.my-inline-table {
+    td {
+        padding: 0 !important;
+    }
+    input {
+        border: none;
+        border-radius: 0%;
+    }
+    .form-control:disabled,
+    .form-control[readonly] {
+        background-color: initial;
+        cursor: default;
+    }
+    .form-control {
+        background-color: initial;
+    }
+}

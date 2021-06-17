@@ -1,0 +1,39 @@
+<div class="card card-default">
+  <div class="card-body">
+    <%= form_with(model: elongation, local: true) do |form| %>
+  <% if elongation.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= pluralize(elongation.errors.count, "error") %> prohibited this elongation from being saved:
+
+      <ul>
+        <% elongation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :cable_id %>
+    <%= form.text_field :cable_id %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :elongation %>
+    <%= form.text_field :elongation, class:"form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :deviation %>
+    <%= form.text_field :deviation, class:"form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :elongation_meter %>
+    <%= form.text_field :elongation_meter, class:"form-control", required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-sm btn-secondary" %>
+  </div>
+<% end %>

@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pumps</h1>
+
+<% if can? :create, Pump %>
+  <%= link_to 'New Pump', new_company_pump_path, class: "btn mr-1 mb-1 btn-inverse" %>
+<% end %>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Identification</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pumps.each do |pump| %>
+      <tr>
+        <td><%= pump.id %></td>
+        <td><%= pump.identification %></td>
+        <td><%= pump.name %></td>
+        <td><%= link_to 'Show', company_pump_path(pump.company_id, pump), class:"mb-1 btn btn-primary" %></td>
+        <% if can? :update, Pump %>
+          <td><%= link_to 'Edit', edit_company_pump_path(pump.company_id, pump), class:"mb-1 btn btn-purple" %></td>
+        <% end %>
+        <% if can? :delete, Pump %>
+          <td><%= button_to company_pump_path(pump.company_id, pump), method: :delete, onClick: 'return confirm("Are you sure?");', remote: true, class: "btn btn-danger" do %>Delete<% end %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

@@ -1,0 +1,44 @@
+<div class="card card-default">
+  <div class="card-body">
+    <%= form_with(model: jacks_use, local: true) do |form| %>
+  <% if jacks_use.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= pluralize(jacks_use.errors.count, "error") %> prohibited this jacks_use from being saved:
+
+      <ul>
+        <% jacks_use.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :jack_id %>
+    <%= form.text_field :jack_id %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :spreadsheet_id %>
+    <%= form.text_field :spreadsheet_id %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :start %>
+    <%= form.datetime_select :start %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end %>
+    <%= form.datetime_select :end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :elongations_number %>
+    <%= form.number_field :elongations_number %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-sm btn-secondary" %>
+  </div>
+<% end %>

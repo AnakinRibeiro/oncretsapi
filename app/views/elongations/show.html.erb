@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cable:</strong>
+  <%= @elongation.cable_id %>
+</p>
+
+<p>
+  <strong>Elongation:</strong>
+  <%= @elongation.elongation %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @elongation.status %>
+</p>
+
+<p>
+  <strong>Deviation:</strong>
+  <%= @elongation.deviation %>
+</p>
+
+<p>
+  <strong>Elongation meter:</strong>
+  <%= @elongation.elongation_meter %>
+</p>
+
+<p>
+  <strong>Cables reviews type:</strong>
+  <%= @elongation.cables_reviews_type_id %>
+</p>
+
+<%= link_to 'Edit', edit_elongation_path(@elongation) %> |
+<%= link_to 'Back', elongations_path %>
